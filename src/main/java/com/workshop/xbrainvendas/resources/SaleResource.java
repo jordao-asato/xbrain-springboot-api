@@ -1,5 +1,6 @@
 package com.workshop.xbrainvendas.resources;
 
+import java.net.URI;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -8,10 +9,15 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.workshop.xbrainvendas.dto.SaleRequestDTO;
+import com.workshop.xbrainvendas.dto.SaleResponseDTO;
 import com.workshop.xbrainvendas.dto.SellerStatsDTO;
 import com.workshop.xbrainvendas.entities.Sale;
 import com.workshop.xbrainvendas.services.SaleService;
@@ -34,6 +40,17 @@ public class SaleResource {
 	public ResponseEntity<Sale> findById(@PathVariable Long id) {
 		Sale obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
+	}
+	
+	@PostMapping
+	public ResponseEntity<SaleResponseDTO> insert(@RequestBody SaleRequestDTO dto) {
+		Sale sale = service.insert(dto);
+		
+		SaleResponseDTO responseDTO = new SaleResponseDTO(sale);
+		
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(sale.getId()).toUri();
+		
+		return ResponseEntity.created(uri).body(responseDTO);
 	}
 	
 	@GetMapping(value="/estatisticas")
