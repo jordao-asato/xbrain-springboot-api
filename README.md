@@ -9,13 +9,13 @@
 
 ---
 
-## 📋 Sobre o Projeto
+## Sobre o Projeto
 
 O **SalesTrack** é uma API REST desenvolvida com Spring Boot 4 e JPA/Hibernate para gerenciar vendas e calcular indicadores de desempenho por vendedor. O endpoint de estatísticas consolida, para um período informado, o **total vendido** e a **média diária de vendas** por vendedor — agrupando as vendas via Java Streams e calculando a média com precisão usando `BigDecimal` e `RoundingMode.HALF_UP`. A camada de serviço é coberta por uma suíte de **4 testes unitários** com JUnit 5 e Mockito, validando os cenários de sucesso e os casos de erro esperados.
 
 ---
 
-## 🚀 Endpoints da API
+## Endpoints da API
 
 ### Vendas `/sales`
 
@@ -35,7 +35,7 @@ O **SalesTrack** é uma API REST desenvolvida com Spring Boot 4 e JPA/Hibernate 
 
 ---
 
-## 📊 Endpoint de Estatísticas
+## Endpoint de Estatísticas
 
 `GET /sales/estatisticas?dataInicio={YYYY-MM-DD}&dataFim={YYYY-MM-DD}`
 
@@ -66,7 +66,7 @@ GET /sales/estatisticas?dataInicio=2026-03-29&dataFim=2026-04-01
 
 ---
 
-## 🗂️ Modelo de Domínio
+## Modelo de Domínio
 
 ```
 Seller (tb_seller)
@@ -86,7 +86,7 @@ Seller (tb_seller)
 
 ---
 
-## 🧪 Testes Unitários
+## Testes Unitários
 
 A camada de serviço (`SaleService`) é coberta por 4 testes com **JUnit 5 + Mockito**, isolando o serviço com mocks dos repositórios:
 
@@ -105,7 +105,7 @@ Para rodar a suíte:
 
 ---
 
-## 🏗️ Arquitetura
+## Arquitetura
 
 ```
 resources/          ← Controllers REST (@RestController)
@@ -118,7 +118,7 @@ config/             ← Seed de dados para o perfil de teste (TestConfig)
 
 ---
 
-## 🛠️ Tecnologias
+## Tecnologias
 
 - **Java 25**
 - **Spring Boot 4.0.5** (Spring MVC, Spring Data JPA)
@@ -131,7 +131,7 @@ config/             ← Seed de dados para o perfil de teste (TestConfig)
 
 ---
 
-## ⚙️ Como Executar
+## Como Executar
 
 ### Pré-requisitos
 
@@ -171,7 +171,7 @@ Password: (vazio)
 
 ---
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 src/
